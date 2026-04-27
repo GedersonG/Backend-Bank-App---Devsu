@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: bank-service
+  profiles:
+    active: dev
+
+  r2dbc:
+    pool:
+      initial-size: 5
+      max-size: 20
+      max-idle-time: 30m
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    disable-swagger-default-url: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+  endpoint:
+    health:
+      show-details: when-authorized
+
+logging:
+  level:
+    root: INFO
+
+banking:
+  account:
+    reset-cron: "${ACCOUNT_RESET_CRON:0 0 0 * * *}"
+    default-daily-limit: ${ACCOUNT_DEFAULT_DAILY_LIMIT:1000.00}

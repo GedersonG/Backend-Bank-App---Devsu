@@ -1,0 +1,27 @@
+spring:
+  r2dbc:
+    url: ${DB_R2DBC_URL:r2dbc:postgresql://localhost:5432/bank_db_test}
+    username: ${DB_USERNAME:user}
+    password: ${DB_PASSWORD:password}
+    properties:
+      schema: banking
+
+  flyway:
+    enabled: true
+    url: ${DB_JDBC_URL:jdbc:postgresql://localhost:5432/bank_db_test}
+    user: ${DB_USERNAME:user}
+    password: ${DB_PASSWORD:password}
+    locations: classpath:db/migration
+    schemas: banking
+    default-schema: banking
+    create-schemas: true
+    baseline-on-migrate: true
+    clean-on-validate-error: true
+
+logging:
+  level:
+    com.devsu: DEBUG
+
+cors:
+  allowed-origins:
+    - http://localhost:4200

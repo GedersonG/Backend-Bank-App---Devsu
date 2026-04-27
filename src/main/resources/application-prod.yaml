@@ -1,0 +1,27 @@
+spring:
+  r2dbc:
+    url: ${DB_R2DBC_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    properties:
+      schema: banking
+
+  flyway:
+    enabled: true
+    url: ${DB_JDBC_URL}
+    user: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    locations: classpath:db/migration
+    schemas: banking
+    default-schema: banking
+    baseline-on-migrate: true
+
+logging:
+  level:
+    root: WARN
+    com.devsu: INFO
+
+cors:
+  allowed-origins:
+    - https://tudominio.com
+    - https://www.tudominio.com
