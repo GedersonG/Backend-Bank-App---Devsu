@@ -1,0 +1,668 @@
+{
+  "info": {
+    "_postman_id": "1df52576-2ada-426c-be7b-777ccb07c5cf",
+    "name": "Bank - Test Devsu",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "28263721"
+  },
+  "item": [
+    {
+      "name": "Customer",
+      "item": [
+        {
+          "name": "Create Customer",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Second Customer\",\n    \"identification\": \"54654862\",\n    \"gender\": \"Masculino\",\n    \"age\": 1,\n    \"password\": \"passTravelEncrypt\",\n    \"phone\": \"3136303782\",\n    \"address\": \"myAddress\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/v1/clientes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "clientes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Customers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/clientes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "clientes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Customer by ClientID",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/clientes/230fadb6-e330-4bce-a8f9-80f7623732f3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "clientes",
+                "230fadb6-e330-4bce-a8f9-80f7623732f3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Partial update Customer",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nombre actualizado\",\n  \"gender\": \"Masculino\",\n  \"age\": 0,\n  \"identification\": \"429839842\",\n  \"address\": \"Other Address\",\n  \"phone\": \"13854953\",\n  \"password\": \"anotherPass\",\n  \"status\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/v1/clientes/230fadb6-e330-4bce-a8f9-80f7623732f3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "clientes",
+                "230fadb6-e330-4bce-a8f9-80f7623732f3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Complete update Customer",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Another name more\",\n  \"gender\": \"Female\",\n  \"age\": 21,\n  \"identification\": \"743929324\",\n  \"address\": \"One address more\",\n  \"phone\": \"241214124\",\n  \"password\": \"anotherPassword\",\n  \"status\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/v1/clientes/230fadb6-e330-4bce-a8f9-80f7623732f3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "clientes",
+                "230fadb6-e330-4bce-a8f9-80f7623732f3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Inactive Customer",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/clientes/230fadb6-e330-4bce-a8f9-80f7623732f3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "clientes",
+                "230fadb6-e330-4bce-a8f9-80f7623732f3"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Account",
+      "item": [
+        {
+          "name": "Get all Acounts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v{version}/cuentas?cursor=0&pageSize=20&accountNumber=100001&accountType=&customerIdentification=",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v{version}",
+                "cuentas"
+              ],
+              "query": [
+                {
+                  "key": "cursor",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "accountNumber",
+                  "value": "100001"
+                },
+                {
+                  "key": "accountType",
+                  "value": ""
+                },
+                {
+                  "key": "customerIdentification",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountType\": \"Ahorro\",\n  \"balance\": 5000,\n  \"clientId\": \"d7af9660-d2d9-4b01-9aab-d5cd43a89330\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/v1/cuentas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "cuentas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Account by Number",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/cuentas/001-100001-01",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "cuentas",
+                "001-100001-01"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Partial update Account",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountType\": \"Ahorro\",\n  \"balance\": 4500,\n  \"dailyLimit\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/v1/cuentas/001-100001-01",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "cuentas",
+                "001-100001-01"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Complete update Account",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountType\": \"Ahorro\",\n  \"balance\": 5000,\n  \"status\": 1,\n  \"dailyLimit\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/v1/cuentas/001-100001-01",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "cuentas",
+                "001-100001-01"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Inactive Account",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/cuentas/001-100001-01",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "cuentas",
+                "001-100001-01"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Movement",
+      "item": [
+        {
+          "name": "Create Movement",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"001-100001-01\",\n  \"movementType\": \"Debito\",\n  \"value\": 990,\n  \"referenceAccountNumber\": \"001-100002-01\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/v1/movimientos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "movimientos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Movements",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/movimientos?page=0&pageSize=20&accountNumber=&startDate=2026-01-01T00%3A00%3A00&endDate=2026-12-31T23%3A59%3A59",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "movimientos"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "key": "accountNumber",
+                  "value": ""
+                },
+                {
+                  "key": "startDate",
+                  "value": "2026-01-01T00%3A00%3A00"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-12-31T23%3A59%3A59"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reverse Movement",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/movimientos/1/reversar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "movimientos",
+                "1",
+                "reversar"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Report",
+      "item": [
+        {
+          "name": "Get Report Base64 PDF",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/reportes/pdf?clientId=6aa621a1-3e81-4947-996f-71474b0a7d5f&startDate=2026-01-01T00%3A00%3A00&endDate=2026-12-31T23%3A59%3A59",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "reportes",
+                "pdf"
+              ],
+              "query": [
+                {
+                  "key": "clientId",
+                  "value": "6aa621a1-3e81-4947-996f-71474b0a7d5f"
+                },
+                {
+                  "key": "startDate",
+                  "value": "2026-01-01T00%3A00%3A00"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-12-31T23%3A59%3A59"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Ger Report JSON",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/reportes?clientId=6aa621a1-3e81-4947-996f-71474b0a7d5f&startDate=2026-01-01T00%3A00%3A00&endDate=2026-12-31T23%3A59%3A59",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "reportes"
+              ],
+              "query": [
+                {
+                  "key": "clientId",
+                  "value": "6aa621a1-3e81-4947-996f-71474b0a7d5f"
+                },
+                {
+                  "key": "startDate",
+                  "value": "2026-01-01T00%3A00%3A00"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-12-31T23%3A59%3A59"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
