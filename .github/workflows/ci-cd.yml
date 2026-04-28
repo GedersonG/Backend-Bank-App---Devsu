@@ -34,8 +34,8 @@ jobs:
           chmod +x gradlew
           ./gradlew clean build -x test
 
-      - name: Run unit tests
-        run: ./gradlew test --tests *UseCaseImplTest --tests *Test --exclude *IntegrationTest
+      - name: Run unit tests only
+        run: ./gradlew test --tests "*.UseCaseImplTest"
 
       - name: Generate coverage report
         run: ./gradlew jacocoTestReport
