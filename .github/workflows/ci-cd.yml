@@ -115,10 +115,17 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      # DEBUG: Ver qué tests existen
+      - name: List available tests
+        run: |
+          chmod +x gradlew
+          ./gradlew test --dry-run | grep -i karate || echo "No Karate tests found"
+          ./gradlew test --dry-run | grep -i runner || echo "No Runner tests found"
+
       - name: Run Karate tests with Testcontainers
         run: |
           chmod +x gradlew
-          ./gradlew test --tests "*KarateTestRunner"
+          ./gradlew test --tests "com.devsu.app.KarateRunnerTest"
 
       - name: Upload Karate reports
         uses: actions/upload-artifact@v4
