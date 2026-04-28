@@ -45,6 +45,34 @@ jobs:
           name: application-jar
           path: build/libs/*.jar
 
+  validate-observability:
+    name: Validate Observability Config
+    runs-on: ubuntu-latest
+    needs: build-and-test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate OpenTelemetry config
+        run: |
+          # Verificar que el archivo YAML es válido
+          python -c "import yaml; yaml.safe_load(open('observability/otel-collector-config.yaml'))"
+
+      - name: Validate Tempo config
+        run: |
+          python -c "import yaml; yaml.safe_load(open('observability/tempo.yaml'))"
+
+      - name: Check SLO file syntax
+        run: |
+          python -c "import yaml; yaml.safe_load(open('slo.yaml'))"
+
+      - name: Upload observability configs
+        uses: actions/upload-artifact@v4
+        with:
+          name: observability-configs
+          path: observability/
+
   docker-push:
     name: Push to Docker Hub
     runs-on: ubuntu-latest
