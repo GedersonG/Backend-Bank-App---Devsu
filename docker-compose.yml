@@ -36,13 +36,13 @@ services:
   tempo:
     image: grafana/tempo:latest
     container_name: bank_tempo
-    command: ["-config.file=/etc/tempo.yaml"]
+    user: root
+    command: [ "-config.file=/etc/tempo/tempo.yaml" ]
     volumes:
-      - ./observability/tempo.yaml:/etc/tempo.yaml
-      - tempo_data:/tmp/tempo
+      - ./observability:/etc/tempo
+      - tempo_data:/var/tempo
     ports:
       - "3200:3200"
-      - "4317:4317"
     networks:
       - observability
 
