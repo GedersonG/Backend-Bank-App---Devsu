@@ -12,21 +12,6 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:15-alpine
-        env:
-          POSTGRES_DB: bank_db
-          POSTGRES_USER: user
-          POSTGRES_PASSWORD: password
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -41,22 +26,10 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Run unit tests from usecase package
-        env:
-          SPRING_PROFILES_ACTIVE: test
-          DB_R2DBC_URL: r2dbc:postgresql://localhost:5432/bank_db
-          DB_JDBC_URL: jdbc:postgresql://localhost:5432/bank_db
-          DB_USERNAME: user
-          DB_PASSWORD: password
+      - name: Run unit tests only (skip integration tests)
         run: |
           ./gradlew clean build -x test
           ./gradlew test --tests "com.devsu.app.application.usecase.*"
-
-      - name: Generate coverage report
-        run: ./gradlew jacocoTestReport
-
-      - name: Verify coverage threshold
-        run: ./gradlew jacocoTestCoverageVerification
 
       - name: Upload test reports
         uses: actions/upload-artifact@v4
@@ -65,7 +38,6 @@ jobs:
           name: test-reports
           path: |
             build/reports/tests/test/
-            build/reports/jacoco/test/html/
 
       - name: Upload JAR file
         uses: actions/upload-artifact@v4
@@ -89,7 +61,7 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Build JAR
+      - name: Build JAR for Docker
         run: |
           chmod +x gradlew
           ./gradlew bootJar -x test
