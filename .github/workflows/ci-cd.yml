@@ -35,7 +35,7 @@ jobs:
           ./gradlew clean build -x test
 
       - name: Run unit tests
-        run: ./gradlew test --tests *UseCaseImplTest
+        run: ./gradlew test --tests *UseCaseImplTest --tests *Test --exclude *IntegrationTest
 
       - name: Generate coverage report
         run: ./gradlew jacocoTestReport
